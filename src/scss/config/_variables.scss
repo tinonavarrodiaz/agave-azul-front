@@ -1,0 +1,28 @@
+// Typography
+$font-family: 'Trueno', 'sans-serif';
+$font-family-light: 'Trueno-light', 'sans-serif';
+$font-family-light: 'Trueno-light', 'sans-serif';
+
+$font-heading: 'Myriad Pro',
+' sans-serif';
+
+$font-tequilas: 'Lucida Grande',
+'sans-serif';
+
+$font-tequilas-heading: 'Kohinoor Bangla',
+'sans-serif';
+
+$font-tequilas-text: 'Helvetica',
+'sans-serif';
+
+$truenoRg: 'TruenoLT', 'sans-serif';
+$truenoUltLtIt: 'TruenoUltLtIt', 'sans-serif';
+$truenoSBd: 'TruenoSBd', 'sans-serif';
+
+//$body-bg: #fdfdfd;
+$body-bg: #010101;
+$color-font: #F1F2F2;
+:root{
+  --color-font: $color-font;
+  --size: 3rem;
+}

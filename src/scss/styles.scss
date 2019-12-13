@@ -1,0 +1,266 @@
+/*
+  This boilerplate is based in ITCSS and SMACSS
+*/
+
+// Variables de personalizacion de ed-grid
+
+//$breakpoints : (
+//  s  : 0,
+//  m  : 640px,
+//  lg : 1024px,
+//  xl : 1440px
+//);
+//
+//$prototype        : true;         // Activa los estilos de prototipado
+//$dev              : false;        // Activa los estilos para debuggin
+//$max-width        : 1200px;       // Ancho máximo de los contenedores ed-container y ed-grid
+//$l-unit           : .5rem;        // Unidad básica de layout (para separaciones verticales, margin y padding)
+//$gap              : $l-unit * 4;  // Separación entre columnas (2rem)
+//$legacy           : false;        // Soporte para versiones antiguas
+//$container        : ed-container; // Clase para el contenedor (core flexbox)
+//$item             : ed-item;      // Clase para los items (core flexbox)
+//$max-grid-columns : 12;           // Máximo número de columnas (core css grid)
+//$fractions        : 3 6;          // Fracciones para crear columnas (core flexbox)
+
+// Config
+@import "config/functions";
+@import "config/variables";
+@import "config/mixins";
+
+
+//EDGrid
+// @import "~ed-grid/ed-grid";
+
+// Hamburgers Menu
+// @import "~hamburgers/dist/hamburgers.min.css";
+
+// Base and elements (generic)
+@import "base/base";
+
+// LAYOUT
+  // Escribe solo los estilos de layout (division en regiones del viewport)
+@import "layout/layout";
+
+// MODULOS (SMACSS) O COMPONENTES (ITCSS)
+  // Son los elementos de UI de tu interfaz, como botones, tablas, menus, etc.
+  // Crea los archivos adicionales que necesites (uno por componente)
+@import "components/buttons";
+@import "components/menus";
+
+// Theme (colors and fonts)
+@import "theme/typography";
+
+// Utilities (hacks)
+  // Todos los hacks que hayas necesitado para solucionar conflictos
+  // o resolver situaciones extremas. Se espera poder mejorarlos luego.
+@import "hacks/hacks";
+
+$bd-color: rgba(#fff,.3);
+$border: 1px solid $bd-color;
+
+body, .container{
+  transform-origin: center;
+}
+.container{
+  @media screen and(min-width: 1024px) and(max-width: 1440px){
+    transform: scale(.8);
+  }
+}
+
+.languageContainer{
+  p{
+    text-align: center;
+    text-transform: uppercase;
+    padding:  0 1em;
+    @media screen and (max-width: 1024px) {
+      font-size: 4vw;
+    }
+  }
+}
+.flags-container{
+  width: 100%;
+  max-width: 500px;
+  margin: 10vh auto 0;
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  grid-gap: 3em;
+  img{
+    cursor: pointer;
+  }
+  a{
+    display: block;
+    text-align: center;
+    text-transform: uppercase;
+    line-height: 3.5em;
+    font-family: $font-tequilas-heading;
+    font-size: 2em;
+    //font-style: italic;
+  }
+  @media screen and (max-width: 1024px) {
+    max-width: 40%;
+    display: flex;
+    flex-direction: column;
+    img:first-child{
+      margin-bottom: 1em;
+    }
+  }
+}
+.ageContainer{
+  text-align: center;
+  padding: 0 1em;
+  h1{
+    font-size: 1.8em;
+    text-transform: uppercase;
+    margin-bottom: 1em;
+    font-family: $font-family-light;
+    opacity: .9;
+    @media screen and (max-width: 1024px) {
+      font-size: 4vw;
+    }
+  }
+  .subTitle, .textFooter{
+    font-size: .9em;
+    width: 80%;
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: normal !important;
+    margin-bottom: 3rem;
+    opacity: .75;
+    @media screen and (max-width: 1024px) {
+      font-size: 4vw;
+    }
+  }
+  .textFooter{
+    max-width: 650px;
+    opacity: .5;
+    text-transform: uppercase;
+    margin-bottom: 0;
+  }
+  form{
+    --mb: 13.5vh;
+    margin-bottom: calc(var(--mb) + 2em);
+    position: relative;
+    @media screen and(min-width: 1440px){
+      --mb: 9.5vh
+    }
+    &::after{
+      content: '';
+      position: absolute;
+      display: block;
+      width: 80%;
+      max-width: 750px;
+      height: 2px;
+      bottom: calc(var(--mb) * -1);
+      left: 50%;
+      transform: translateX(-50%);
+      background: $bd-color;
+    }
+
+  }
+  .form-container{
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2.5em;
+  }
+  .input-group{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    height: auto;
+    margin-right: 1rem;
+    &:last-child{
+      margin-right: 0;
+    }
+    &.space-4{
+      width: calc(var(--size) * 4);
+      & .input-container::after{
+        box-shadow: var(--size) 0 $bd-color,
+                    calc(var(--size) * 2) 0 $bd-color;
+      }
+    }
+    &.space-2{
+      width: calc(var(--size) * 2);
+    }
+    .input-container{
+      border: $border;
+      width: 100%;
+      height: auto;
+      position: relative;
+      &::after{
+        content: '';
+        position: absolute;
+        top: 0;
+        left: var(--size);
+        width: 1px;
+        height: 100%;
+        background: $bd-color;
+      }
+    }
+    input{
+      height: calc(var(--size) * 1.25);
+      line-height: calc(var(--size) * 1.25);
+      width: 100%;
+      border: none;
+      background: transparent;
+      color: #fff;
+      font-size: 1.5em;
+      font-family: inherit;
+      letter-spacing: 1.4em;
+      padding-left: .9em;
+    }
+  }
+  input, label{
+    opacity: .5;
+  }
+  label{
+    text-transform: uppercase;
+    font-size: .7em;
+    margin-bottom: 1em;
+    font-family: Arial;
+    font-weight: 300;
+  }
+}
+
+input, button{
+  &:focus{
+    outline: none;
+    box-shadow: none;
+  }
+  &:active{
+    outline: none;
+    box-shadow: none;
+  }
+}
+button.btn{
+  background: transparent;
+  border: $border;
+  color: $bd-color;
+  text-transform: uppercase;
+  line-height: calc(var(--size) * .75);
+  padding: 0 calc(var(--size) * .5);
+  cursor: pointer;
+}
+
+.main-footer{
+  opacity: .9;
+  padding: 0 1em;
+  p{
+    margin-bottom: 0;
+    @media screen and (max-width: 1024px) {
+      font-size: 4vw;
+      transform: translateY(-8vh);
+    }
+  }
+}
+.ageContainer{
+  @media screen and (max-width: 1024px) {
+    transform-origin: center;
+    transform: scale(.65) ;
+  }
+}
