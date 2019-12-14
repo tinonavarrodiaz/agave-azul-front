@@ -27,7 +27,6 @@
 @import "config/variables";
 @import "config/mixins";
 
-
 //EDGrid
 // @import "~ed-grid/ed-grid";
 
@@ -38,12 +37,12 @@
 @import "base/base";
 
 // LAYOUT
-  // Escribe solo los estilos de layout (division en regiones del viewport)
+// Escribe solo los estilos de layout (division en regiones del viewport)
 @import "layout/layout";
 
 // MODULOS (SMACSS) O COMPONENTES (ITCSS)
-  // Son los elementos de UI de tu interfaz, como botones, tablas, menus, etc.
-  // Crea los archivos adicionales que necesites (uno por componente)
+// Son los elementos de UI de tu interfaz, como botones, tablas, menus, etc.
+// Crea los archivos adicionales que necesites (uno por componente)
 @import "components/buttons";
 @import "components/menus";
 
@@ -51,43 +50,44 @@
 @import "theme/typography";
 
 // Utilities (hacks)
-  // Todos los hacks que hayas necesitado para solucionar conflictos
-  // o resolver situaciones extremas. Se espera poder mejorarlos luego.
+// Todos los hacks que hayas necesitado para solucionar conflictos
+// o resolver situaciones extremas. Se espera poder mejorarlos luego.
 @import "hacks/hacks";
 
-$bd-color: rgba(#fff,.3);
+$bd-color: rgba(#fff, 0.3);
 $border: 1px solid $bd-color;
 
-body, .container{
+body,
+.container {
   transform-origin: center;
 }
-.container{
-  @media screen and(min-width: 1024px) and(max-width: 1440px){
-    transform: scale(.8);
+.container {
+  @media screen and(min-width: 1024px) and(max-width: 1440px) {
+    transform: scale(0.8);
   }
 }
 
-.languageContainer{
-  p{
+.languageContainer {
+  p {
     text-align: center;
     text-transform: uppercase;
-    padding:  0 1em;
+    padding: 0 1em;
     @media screen and (max-width: 1024px) {
       font-size: 4vw;
     }
   }
 }
-.flags-container{
+.flags-container {
   width: 100%;
   max-width: 500px;
   margin: 10vh auto 0;
   display: grid;
-  grid-template-columns: repeat(2,1fr);
+  grid-template-columns: repeat(2, 1fr);
   grid-gap: 3em;
-  img{
+  img {
     cursor: pointer;
   }
-  a{
+  a {
     display: block;
     text-align: center;
     text-transform: uppercase;
@@ -100,52 +100,54 @@ body, .container{
     max-width: 40%;
     display: flex;
     flex-direction: column;
-    img:first-child{
+    img:first-child {
       margin-bottom: 1em;
     }
   }
 }
-.ageContainer{
+.ageContainer {
   text-align: center;
   padding: 0 1em;
-  h1{
+  h1 {
     font-size: 1.8em;
     text-transform: uppercase;
     margin-bottom: 1em;
     font-family: $font-family-light;
-    opacity: .9;
+    opacity: 0.9;
     @media screen and (max-width: 1024px) {
       font-size: 4vw;
     }
+    
   }
-  .subTitle, .textFooter{
-    font-size: .9em;
+  .subTitle,
+  .textFooter {
+    font-size: 0.9em;
     width: 80%;
     max-width: 520px;
     margin-left: auto;
     margin-right: auto;
     font-weight: normal !important;
     margin-bottom: 3rem;
-    opacity: .75;
+    opacity: 0.75;
     @media screen and (max-width: 1024px) {
       font-size: 4vw;
     }
   }
-  .textFooter{
+  .textFooter {
     max-width: 650px;
-    opacity: .5;
+    opacity: 0.5;
     text-transform: uppercase;
     margin-bottom: 0;
   }
-  form{
+  form {
     --mb: 13.5vh;
     margin-bottom: calc(var(--mb) + 2em);
     position: relative;
-    @media screen and(min-width: 1440px){
-      --mb: 9.5vh
+    @media screen and(min-width: 1440px) {
+      --mb: 9.5vh;
     }
-    &::after{
-      content: '';
+    &::after {
+      content: "";
       position: absolute;
       display: block;
       width: 80%;
@@ -156,9 +158,8 @@ body, .container{
       transform: translateX(-50%);
       background: $bd-color;
     }
-
   }
-  .form-container{
+  .form-container {
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
@@ -167,33 +168,32 @@ body, .container{
     align-items: center;
     margin-bottom: 2.5em;
   }
-  .input-group{
+  .input-group {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     height: auto;
     margin-right: 1rem;
-    &:last-child{
+    &:last-child {
       margin-right: 0;
     }
-    &.space-4{
+    &.space-4 {
       width: calc(var(--size) * 4);
-      & .input-container::after{
-        box-shadow: var(--size) 0 $bd-color,
-                    calc(var(--size) * 2) 0 $bd-color;
+      & .input-container::after {
+        box-shadow: var(--size) 0 $bd-color, calc(var(--size) * 2) 0 $bd-color;
       }
     }
-    &.space-2{
+    &.space-2 {
       width: calc(var(--size) * 2);
     }
-    .input-container{
+    .input-container {
       border: $border;
       width: 100%;
       height: auto;
       position: relative;
-      &::after{
-        content: '';
+      &::after {
+        content: "";
         position: absolute;
         top: 0;
         left: var(--size);
@@ -202,7 +202,7 @@ body, .container{
         background: $bd-color;
       }
     }
-    input{
+    input {
       height: calc(var(--size) * 1.25);
       line-height: calc(var(--size) * 1.25);
       width: 100%;
@@ -212,45 +212,55 @@ body, .container{
       font-size: 1.5em;
       font-family: inherit;
       letter-spacing: 1.4em;
-      padding-left: .9em;
+      padding-left: 0.9em;
+      &.day-input {
+        padding-left: 0.9em;
+        letter-spacing: 1.2em;
+      }
+      &.moth-input {
+        padding-left: 0.9em;
+        letter-spacing: 1.3em;
+      }
     }
   }
-  input, label{
-    opacity: .5;
+  input,
+  label {
+    opacity: 0.5;
   }
-  label{
+  label {
     text-transform: uppercase;
-    font-size: .7em;
+    font-size: 0.7em;
     margin-bottom: 1em;
     font-family: Arial;
     font-weight: 300;
   }
 }
 
-input, button{
-  &:focus{
+input,
+button {
+  &:focus {
     outline: none;
     box-shadow: none;
   }
-  &:active{
+  &:active {
     outline: none;
     box-shadow: none;
   }
 }
-button.btn{
+button.btn {
   background: transparent;
   border: $border;
   color: $bd-color;
   text-transform: uppercase;
-  line-height: calc(var(--size) * .75);
-  padding: 0 calc(var(--size) * .5);
+  line-height: calc(var(--size) * 0.75);
+  padding: 0 calc(var(--size) * 0.5);
   cursor: pointer;
 }
 
-.main-footer{
-  opacity: .9;
+.main-footer {
+  opacity: 0.9;
   padding: 0 1em;
-  p{
+  p {
     margin-bottom: 0;
     @media screen and (max-width: 1024px) {
       font-size: 4vw;
@@ -258,9 +268,9 @@ button.btn{
     }
   }
 }
-.ageContainer{
+.ageContainer {
   @media screen and (max-width: 1024px) {
     transform-origin: center;
-    transform: scale(.65) ;
+    transform: scale(0.65);
   }
 }
