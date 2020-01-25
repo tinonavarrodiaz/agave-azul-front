@@ -1,4 +1,13 @@
 import { isMobile } from "./modules/isMobile";
+// (()=>{
+//   const access = localStorage.getItem('access')
+//   const lang =localStorage.getItem('lang')
+//   if (access && lang){
+//     if(lang==='es') location.href='/es'
+//     if(lang==='en') location.href='/en'
+//   }
+// })();
+
 const exReg = "^[0-9]";
 const textEs = {
   year: "año",
@@ -8,6 +17,7 @@ const textEs = {
   subTitle:
     "Antes de ingresar al maravilloso mundo de Distiladora Agave Azul por favor confirma que eres mayor de edad.",
   buttonText: "entrar",
+  checkText: "¿Desea mantener sus informacion en esta computadora?",
   footerText:
     "Entra a este sitio solo si tienes la edad legal para ingerir bebidas alcoholicas, presionando el boton entrar, estas de acuerdo con los téminos y políticas de privacidad del sitio."
 };
@@ -19,6 +29,7 @@ const textEn = {
   subTitle:
     "Before you see our unique and delicious products, please confirm than you are 18 years old or older",
   buttonText: "enter",
+  checkText: "Do you want to keep your information on this computer?",
   footerText:
     'Enter this site only you are of legal drinking age.by clicking "enter", you agree to the terms of use & the privacy policy of this site'
 };
@@ -27,8 +38,12 @@ let isIphone = /(iPhone)/i.test(navigator.userAgent);
 let isSafari = !!navigator.userAgent.match(/Version\/[\d\.]+.*Safari/);
 
 if (isIphone && isSafari) {
-  document.body.classList.add("safari")
+  document.body.classList.add("safari");
 }
+
+/*eduardo.gutierrez.montiel@gmail.com
+
+inotek2019*/
 
 const container = document.getElementById("container");
 
@@ -76,24 +91,28 @@ const showScreenAgeGate = (container, lang) => {
     <p class="subTitle">${text.subTitle}</p>
     <form action="#" id="form" class="form">
         <div class="form-container">
-            <div class="input-group ">
+            <div class="input-group four">
                 <label for="year">${text.year}</label>
                 <div class="input-container space-4">
                     <input type="text" max="2020" maxlength="4" name="year" id="year">
                 </div>
             </div>
-            <div class="input-group space-2"">
+            <div class="input-group space-2 tow"">
                 <label for="month">${text.month}</label>
                 <div class="input-container">
-                    <input class="moth-input" type="text" max="12" maxlength="2" name="moth"  id="month">            
+                    <input class="moth-input" type="text" max="12" maxlength="2" name="moth"  id="month">
                 </div>
             </div>
-            <div class="input-group space-2">
+            <div class="input-group space-2 tow">
                 <label for="day">${text.day}</label>
                 <div class="input-container">
                     <input class="day-input" type="text" max="31" maxlength="2" name="day"  id="day">
                 </div>
             </div>
+        </div>
+        <div class="check-group">
+            <input type="checkbox" id="checkBox">
+            <label for="checkBox">${text.checkText}</label>            
         </div>
         <button type="submit" id="enter" class="btn">${text.buttonText}</button>
     </form>
@@ -146,7 +165,15 @@ const verifyAge = (lang, dateInput, inputs) => {
   const birdDay = new Date(dateInput[0], dateInput[1] - 1, dateInput[2]);
   console.log(getYears(now - birdDay));
   if (getYears(now - birdDay) > 18) {
-    sessionStorage.setItem("access", "true");
+    const form = document.querySelector('form')
+    const checkBoxIn = form.querySelector('#checkBox')
+    console.log(checkBoxIn.checked)
+    if(checkBoxIn.checked){
+      localStorage.setItem("access", "true")
+      localStorage.setItem("lang", lang)
+    }else{
+      sessionStorage.setItem("access", "true")
+    }
     if (lang === "es") location.href = "/es";
     if (lang === "en") location.href = "/en";
   }

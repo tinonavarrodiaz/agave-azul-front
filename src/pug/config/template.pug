@@ -19,8 +19,18 @@ html(lang="es")
     link(rel="stylesheet" href="assets/fonts/stylesheet.css")
     link(rel="stylesheet" id="stylesheet" href="css/styles-mobile.css")
     link(rel="shortcut icon" href="img/favicon.png")
+    script.
+      (function() {
+        var access = localStorage.getItem('access')
+        var lang = localStorage.getItem('lang')
+        if (access==='true' && lang) {
+          if (lang === 'es') location.href = '/es'
+          if (lang === 'en') location.href = '/en'
+        }
+      })();
     script(src="assets/js/jquery.min.js")
     script(src="assets/js/jquery.nicescroll.min.js")
+
 
   body
     block main
